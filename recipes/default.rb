@@ -7,16 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-group 'pi' do
-  gid '1000'
-end
-
-user 'pi' do
-  uid '1000'
-  gid 'pi'
-  home '/home/pi'
-end
-
 node['pi-motion']['motion-packages'].each do |pkg|
   package pkg do
   action :install
