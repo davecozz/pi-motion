@@ -26,7 +26,7 @@ setup_mode off
 
 # Videodevice to be used for capturing  (default /dev/video0)
 # for FreeBSD default is /dev/bktr0
-videodevice /dev/video0
+videodevice <%= node['pi-motion']['videodevice'] %>
 
 # v4l2_palette allows to choose preferable palette to be use by motion
 # to capture from those supported by your videodevice. (default: 8)
@@ -64,13 +64,13 @@ frequency 0
 
 # Rotate image this number of degrees. The rotation affects all saved images as
 # well as mpeg movies. Valid values: 0 (default = no rotation), 90, 180 and 270.
-rotate 270
+rotate <%= node['pi-motion']['rotate'] %>
 
 # Image width (pixels). Valid range: Camera dependent, default: 352
-width 800
+width <%= node['pi-motion']['width'] %>
 
 # Image height (pixels). Valid range: Camera dependent, default: 288
-height 448
+height <%= node['pi-motion']['height'] %>
 
 # Maximum number of frames to be captured per second.
 # Valid range: 2-100. Default: 100 (almost no limit).

@@ -17,6 +17,7 @@ default['pi-motion']['group'] = 'motion'
 default['pi-motion']['target-dir'] = '/var/tmp/motion'
 
 ##motion.conf settings
+default['pi-motion']['videodevice'] = '/dev/video0'
 default['pi-motion']['rotate'] = '0'
 default['pi-motion']['width'] = '800'
 default['pi-motion']['height'] = '448'
