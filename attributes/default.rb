@@ -7,13 +7,19 @@
 # All rights reserved - Do Not Redistribute
 #
 
-default['pi-motion']['packages'] = ['motion', 'uvcdynctrl', 'postfix', 'mutt', 'mailutils', 'libsasl2-2', 'ca-certificates', 'libsasl2-modules']
+default['pi-motion']['motion-packages'] = ['motion', 'uvcdynctrl']
+default['pi-motion']['mail-packages'] = ['postfix', 'mutt', 'mailutils', 'libsasl2-2', 'ca-certificates', 'libsasl2-modules']
 
 default['pi-motion']['user'] = 'motion'
 default['pi-motion']['group'] = 'motion'
 
+##target dir for jpg and avi files
 default['pi-motion']['target-dir'] = '/var/tmp/motion'
 
+##motion.conf settings
+default['pi-motion']['rotate'] = '0'
+default['pi-motion']['width'] = '800'
+default['pi-motion']['height'] = '448'
 default['pi-motion']['threshold'] = '10000'
 default['pi-motion']['lightswitch'] = '10'
 default['pi-motion']['minimum_motion_frames'] = '2'
@@ -32,11 +38,3 @@ default['pi-motion']['on_movie_end'] = 'echo "`date`" | sudo /usr/bin/mutt -a %f
 default['pi-motion']['gmail-address'] = 'YOUREMAIL@gmail.com'
 default['pi-motion']['gmail-password'] = 'YOURGMAILPASSWORD'  ##obviously not secure, use at your own risk!
 
-##off=0, camera-auto=3
-default['pi-motion']['hd6000']['auto-exposure'] = '3'
-##off=0, on=1
-default['pi-motion']['hd6000']['auto-focus'] = '0'
-##number from 0 (infinity) - 40 (macro)
-default['pi-motion']['hd6000']['absolute-focus'] = '0'
-##off=0, on=1
-default['pi-motion']['hd6000']['auto-wb'] = '1'

@@ -36,7 +36,6 @@ execute 'set-hd6000-auto-wb' do
 end
 
 service 'motion' do
-  supports :start => true, :stop => true, :restart => true, :reload => true
-  action :enable
+  action :nothing
 end
 

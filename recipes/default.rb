@@ -17,9 +17,9 @@ user 'pi' do
   home '/home/pi'
 end
 
-node['pi-motion']['packages'].each do |pkg|
+node['pi-motion']['motion-packages'].each do |pkg|
   package pkg do
-  	action :install
+  action :install
   end
 end
 
@@ -51,54 +51,47 @@ template '/etc/init.d/motion' do
   group 'root' 
 end
 
-template '/etc/postfix/main.cf' do
-  source 'main.cf.erb'
-  mode '0644'
-  owner 'root'
-  group 'root'
-  notifies :restart, 'service[postfix]', :delayed
-end
+if node['pi-motion']['enable-on_movie_end']
+  node['pi-motion']['mail-packages'].each do |pkg|
+    package pkg do
+    action :install
+    end
+  end
 
-template '/etc/postfix/sasl_passwd' do
-  source 'sasl_passwd.erb'
-  mode '0600'
-  owner 'root'
-  group 'root' 
-  notifies :run, 'execute[update-sasl-password.db]', :immediately
-  notifies :restart, 'service[postfix]', :delayed
-end
+  template '/etc/postfix/main.cf' do
+    source 'main.cf.erb'
+    mode '0644'
+    owner 'root'
+    group 'root'
+    notifies :restart, 'service[postfix]', :delayed
+  end
 
-execute 'create-mailname' do
-  command 'hostname --fqdn > /etc/mailname'
-  not_if { ::File.exists?('/etc/mailname') }
-  notifies :restart, 'service[postfix]', :delayed
-end
+  template '/etc/postfix/sasl_passwd' do
+    source 'sasl_passwd.erb'
+    mode '0600'
+    owner 'root'
+    group 'root' 
+    notifies :run, 'execute[update-sasl-password.db]', :immediately
+    notifies :restart, 'service[postfix]', :delayed
+  end
 
-execute 'update-sasl-password.db' do
-  command 'postmap /etc/postfix/sasl_passwd'
-  cwd '/etc/postfix'
-  action :nothing
-  notifies :restart, 'service[postfix]', :delayed
-end
+  execute 'create-mailname' do
+    command 'hostname --fqdn > /etc/mailname'
+    not_if { ::File.exists?('/etc/mailname') }
+    notifies :restart, 'service[postfix]', :delayed
+  end
 
-#ruby_block 'update-cacerts.pem' do
-#  block do
-#    if ::File.exists?('/etc/postfix/cacert.pem')
-#      @cacert = ::File.readlines('/etc/ssl/certs/Thawte_Premium_Server_CA.pem')
-#      @cafile = ::File.readlines('/etc/postfix/cacert.pem')
-#      unless @cafile & @cacert == @cacert
-#        ::File.open('/etc/postfix/cacert.pem', 'a') { |f| f.write(@cacert) }
-#      end
-#    else
-#      ::File.open('/etc/postfix/cacert.pem', 'w') { |f| f.write(@cacert) }
-#    end
-#  end
-#  notifies :restart, 'service[postfix]', :delayed
-#end
+  execute 'update-sasl-password.db' do
+    command 'postmap /etc/postfix/sasl_passwd'
+    cwd '/etc/postfix'
+    action :nothing
+    notifies :restart, 'service[postfix]', :delayed
+  end
 
-service 'postfix' do
-  supports :restart => true, :reload => true, :status => true
-  action [ :enable, :start ]
+  service 'postfix' do
+    supports :restart => true, :reload => true, :status => true
+    action [ :enable, :start ]
+  end
 end
 
 service 'motion' do
