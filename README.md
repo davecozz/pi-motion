@@ -1,6 +1,6 @@
 pi-motion cookbook
 ==================
-The pi-motion cookbook will configure motion, postfix, and mutt to detect movement and then send an email with .avi file attached. You'll need a gmail account to send messages through. 
+The pi-motion cookbook will configure motion, postfix, and mutt to detect movement and then send an email with .avi file attached. You'll need a gmail account to send messages through. I have it sent to my cell phone using my carrier's email-to-sms gateway: http://www.answers.com/Q/How_do_you_email_a_cell_phone_with_Gmail 
 
 This cookbook was created for a Raspberry Pi running Raspbian with a Microsoft HD6000 webcam attached, however it should work for any Debian-based system with a webcam. It has also been tested on a Banana Pi running Bananian with excellent results. It may also work with other Linux distros, I'm not sure. 
 
