@@ -1,5 +1,5 @@
 name             'pi-motion'
-maintainer       'YOUR_NAME'
+maintainer       'Dave Cozzolino @davecozzo'
 maintainer_email 'YOUR_EMAIL'
 license          'All rights reserved'
 description      'Installs/Configures pi-motion'

@@ -2,7 +2,7 @@
 # Cookbook Name:: pi-motion
 # Attributes:: default
 #
-# Copyright (C) 2014 YOUR_NAME
+# Copyright (C) 2014 Dave Cozzolino @davecozzo
 # 
 # All rights reserved - Do Not Redistribute
 #
