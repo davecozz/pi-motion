@@ -48,6 +48,12 @@ if node['pi-motion']['enable-on_movie_end']
     end
   end
 
+  execute 'create-mailname' do
+    command 'hostname --fqdn > /etc/mailname'
+    not_if { ::File.exists?('/etc/mailname') }
+    notifies :restart, 'service[postfix]', :delayed
+  end
+
   template '/etc/postfix/main.cf' do
     source 'main.cf.erb'
     mode '0644'
@@ -62,12 +68,6 @@ if node['pi-motion']['enable-on_movie_end']
     owner 'root'
     group 'root' 
     notifies :run, 'execute[update-sasl-password.db]', :immediately
-    notifies :restart, 'service[postfix]', :delayed
-  end
-
-  execute 'create-mailname' do
-    command 'hostname --fqdn > /etc/mailname'
-    not_if { ::File.exists?('/etc/mailname') }
     notifies :restart, 'service[postfix]', :delayed
   end
 
