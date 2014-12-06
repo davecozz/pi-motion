@@ -48,6 +48,15 @@ if node['pi-motion']['enable-on_movie_end']
     end
   end
 
+  ruby_block "create-#{node['pi-motion']['user']}-home" do
+    block do
+      homedir = Mixlib::ShellOut.new("echo ~#{node['pi-motion']['user']}").run_command.stdout.chomp.strip
+      ::FileUtils.mkdir_p(homedir)
+      ::FileUtils.chown(node['pi-motion']['user'], node['pi-motion']['group'], homedir)
+    end
+    not_if { ::File.directory?( Mixlib::ShellOut.new("echo ~#{node['pi-motion']['user']}").run_command.stdout.chomp.strip ) }
+  end
+
   execute 'create-mailname' do
     command 'hostname --fqdn > /etc/mailname'
     not_if { ::File.exists?('/etc/mailname') }
