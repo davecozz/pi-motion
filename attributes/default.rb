@@ -40,7 +40,7 @@ default['pi-motion']['ffmpeg_video_codec'] = 'mpeg4'
 default['pi-motion']['enable-on_movie_end'] = false
 
 ##update this email address with where you want to send the .avi files
-default['pi-motion']['on_movie_end'] = 'echo "`date`" | sudo /usr/bin/mutt -a %f -- SENDTOTHISEMAIL@email.com'
+default['pi-motion']['on_movie_end'] = 'echo "`date`" | /usr/bin/mutt -a %f -- SENDTOTHISEMAIL@email.com'
 
 ##change to the gmail account to send messages from
 default['pi-motion']['gmail-address'] = 'YOUREMAIL@gmail.com'
