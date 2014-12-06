@@ -2,7 +2,7 @@
 # Cookbook Name:: pi-motion
 # Recipe:: default
 #
-# Copyright (C) 2014 YOUR_NAME
+# Copyright (C) 2014 Dave Cozzolino @davecozzo
 # 
 # All rights reserved - Do Not Redistribute
 #
@@ -87,4 +87,9 @@ end
 service 'motion' do
   supports :restart => true, :reload => true, :status => false
   action [ :enable, :start ]
+end
+
+execute "delete-files-older-than-#{node['pi-motion']['delete-after']}-days" do
+  command "find #{node['pi-motion']['target-dir']} -type f -mtime +#{node['pi-motion']['delete-after']} -exec rm {} \\;"
+  only_if { node['pi-motion']['delete-old-files'] }
 end
