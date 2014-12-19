@@ -10,13 +10,13 @@ Requirements
 First you'll need to get chef-client installed on your Pi. You have two options:
 
 * **Option A**: Easy, but boring.
-1. Install some Ruby packages: `sudo apt-get install ruby rubygems`
-2. Install the Chef gem: `gem install chef`
+  1. Install some Ruby packages: `sudo apt-get install ruby rubygems`
+  2. Install the Chef gem: `gem install chef`
 
 * **Option 2**: Slightly more involved, but fun! The instructions on Chef's repo (https://github.com/opscode/chef) are pretty easy to follow but you'll need some pre-reqs installed first:
-1. First `sudo apt-get install git-core build-essential ruby ruby1.9.1-dev rubygems bundler`
-2. Then run `gem install libyajl2`
-3. Now follow Chef's instructions: https://github.com/opscode/chef#chef-installation
+  1. First `sudo apt-get install git-core build-essential ruby ruby1.9.1-dev rubygems bundler`
+  2. Then run `gem install libyajl2`
+  3. Now follow Chef's instructions: https://github.com/opscode/chef#chef-installation
 
 Here's the hardware I'm using:
 
