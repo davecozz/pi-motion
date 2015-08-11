@@ -10,7 +10,7 @@ Requirements
 First you'll need to get chef-client installed on your Pi. You have two options:
 
 * **Option A**: Easy, but boring.
-  1. Install some Ruby packages: `sudo apt-get install ruby rubygems`
+  1. Install some Ruby packages: `sudo apt-get install ruby rubygems ruby1.9.1-dev build-essential`
   2. Install the Chef gem: `gem install chef`
 
 * **Option 2**: Slightly more involved, but fun! The instructions on Chef's repo (https://github.com/opscode/chef) are pretty easy to follow but you'll need some pre-reqs installed first:
