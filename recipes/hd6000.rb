@@ -2,9 +2,7 @@
 # Cookbook Name:: pi-motion
 # Recipe:: hd6000
 #
-# Copyright (C) 2014 Dave Cozzolino @davecozzo
-# 
-# All rights reserved - Do Not Redistribute
+# Copyright (C) 2016 Dave Cozzolino @davecozzo
 #
 
 execute 'set-hd6000-auto-exposure' do
@@ -34,8 +32,3 @@ execute 'set-hd6000-auto-wb' do
   not_if { Mixlib::ShellOut.new("uvcdynctrl --get 'White Balance Temperature, Auto'").run_command.stdout.strip.chomp == node['pi-motion']['hd6000']['auto-wb'] }
   notifies :restart, 'service[motion]', :delayed
 end
-
-service 'motion' do
-  action :nothing
-end
-

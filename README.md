@@ -7,24 +7,17 @@ This cookbook was created for a Raspberry Pi running Raspbian with a Microsoft H
 
 Requirements
 ------------
-First you'll need to get chef-client installed on your Pi. You have two options:
+First you'll need to get Ruby and chef-client installed on your Pi:
 
-* **Option A**: Easy, but boring.
-  1. Install some Ruby packages: `sudo apt-get install ruby rubygems ruby1.9.1-dev build-essential`
-  2. Install the Chef gem: `gem install chef`
+  1. Install git: `sudo apt-get update && sudo apt-get install -y git-core`
+  1. Install Ruby using [this script](https://gist.github.com/blacktm/8302741): `curl -L https://gist.githubusercontent.com/blacktm/8302741/raw/0b24e78e775fcbdb4a072bc8eb516afc6e620caa/install_ruby_rpi.sh | sudo bash`
+  1. Install the Chef gem: `gem install chef`
 
-* **Option 2**: Slightly more involved, but fun! The instructions on Chef's repo (https://github.com/opscode/chef) are pretty easy to follow but you'll need some pre-reqs installed first:
-  1. First `sudo apt-get install git-core build-essential ruby ruby1.9.1-dev rubygems bundler`
-  2. Then run `gem install libyajl2`
-  3. Now follow Chef's instructions: https://github.com/opscode/chef#chef-installation
 
 Here's the hardware I'm using:
 
 * HD6000 webcam: http://amazon.com/dp/B00372567A
-* Ras Pi B+: http://amazon.com/dp/B00LPESRUK  
-or
-* Banana Pi: http://amazon.com/dp/B00LGXINGS
-* WiFi: http://amazon.com/dp/B003MTTJOY
+* RPi3B: http://amazon.com/dp/B01CD5VC92
 
 
 Attributes

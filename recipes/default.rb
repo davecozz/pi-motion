@@ -2,9 +2,7 @@
 # Cookbook Name:: pi-motion
 # Recipe:: default
 #
-# Copyright (C) 2014 Dave Cozzolino @davecozzo
-# 
-# All rights reserved - Do Not Redistribute
+# Copyright (C) 2016 Dave Cozzolino @davecozzo
 #
 
 node['pi-motion']['motion-packages'].each do |pkg|
@@ -38,7 +36,7 @@ template '/etc/init.d/motion' do
   source 'motion-service.erb'
   mode '0755'
   owner 'root'
-  group 'root' 
+  group 'root'
 end
 
 if node['pi-motion']['enable-on_movie_end']
@@ -75,7 +73,7 @@ if node['pi-motion']['enable-on_movie_end']
     source 'sasl_passwd.erb'
     mode '0600'
     owner 'root'
-    group 'root' 
+    group 'root'
     notifies :run, 'execute[update-sasl-password.db]', :immediately
     notifies :restart, 'service[postfix]', :delayed
   end

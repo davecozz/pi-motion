@@ -2,9 +2,7 @@
 # Cookbook Name:: pi-motion
 # Attributes:: default
 #
-# Copyright (C) 2014 Dave Cozzolino @davecozzo
-# 
-# All rights reserved - Do Not Redistribute
+# Copyright (C) 2016 Dave Cozzolino @davecozzo
 #
 
 default['pi-motion']['motion-packages'] = ['motion', 'uvcdynctrl']
@@ -31,7 +29,7 @@ default['pi-motion']['lightswitch'] = '10'
 default['pi-motion']['minimum_motion_frames'] = '2'
 default['pi-motion']['pre_capture'] = '4'
 default['pi-motion']['post_capture'] = '8'
-default['pi-motion']['gap'] = '60' 
+default['pi-motion']['gap'] = '60'
 default['pi-motion']['jpeg-quality'] = '90'
 default['pi-motion']['ffmpeg_video_codec'] = 'mpeg4'
 
@@ -39,9 +37,9 @@ default['pi-motion']['ffmpeg_video_codec'] = 'mpeg4'
 default['pi-motion']['enable-on_movie_end'] = false
 
 ##update this email address with where you want to send the .avi files
-default['pi-motion']['on_movie_end'] = 'echo "`date`" | /usr/bin/mutt -a %f -- SENDTOTHISEMAIL@email.com'
+default['pi-motion']['on_movie_end'] = 'echo "`date`" | /usr/bin/mutt -s "motion detected by `hostname`" -a %f -- SENDTOTHISEMAIL@email.com'
 
 ##change to the gmail account to send messages from
 default['pi-motion']['gmail-address'] = 'YOUREMAIL@gmail.com'
 ##obviously not secure, use at your own risk! Or better yet, use an encrypted data bag.
-default['pi-motion']['gmail-password'] = 'YOURGMAILPASSWORD'  
+default['pi-motion']['gmail-password'] = 'YOURGMAILPASSWORD'

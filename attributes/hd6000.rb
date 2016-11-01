@@ -2,9 +2,7 @@
 # Cookbook Name:: pi-motion
 # Attributes:: hd6000
 #
-# Copyright (C) 2014 Dave Cozzolino @davecozzo
-# 
-# All rights reserved - Do Not Redistribute
+# Copyright (C) 2016 Dave Cozzolino @davecozzo
 #
 # Attributes speficically for the Microsoft HD6000 USB Webcam
 #
